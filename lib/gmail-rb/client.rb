@@ -9,9 +9,8 @@ module Gmail
     end
 
     def connection
-      @connection ||= Gmail::Connection.new(ENV['GMAIL_CLIENT_API_URL'], @options)
+      @connection ||= Gmail::Connection.new('https://www.googleapis.com', @options)
     end
 
   end
-
 end
