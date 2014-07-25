@@ -1,6 +1,6 @@
 module Gmail
 
-  # Handles all OAuth toekn management required to access the GMail API.
+  # Handles all OAuth token management required to access the GMail API.
   #
   class OAuth
 
@@ -86,7 +86,6 @@ module Gmail
         
       }
 
-      puts token_hash
 
       {
         :access_token => token_hash.fetch("access_token"),

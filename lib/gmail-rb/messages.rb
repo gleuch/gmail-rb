@@ -9,8 +9,6 @@ module Gmail
       conn_body[:maxResults] = opts.fetch(:max_results) { '20' }
       conn_body[:labelIds] = opts.fetch(:labels) unless opts.fetch(:labels) { nil }.nil?
 
-      puts conn_body
-
       # Make the call
       response = connection.get '/gmail/v1/users/me/messages', conn_body
 
@@ -32,7 +30,6 @@ module Gmail
         "fields" => "subject"
       }
 
-      puts response.body
       JSON.parse(response.body)
     end
 
