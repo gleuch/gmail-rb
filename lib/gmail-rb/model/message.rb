@@ -49,8 +49,8 @@ module Gmail
 
       # Decode the message body with URL-safe Base64.
       def decode_body(body)
-        str += '=' * (4 - str.length.modulo(4))
-        Base64.decode64(str.tr('-_','+/'))
+        body += '=' * (4 - body.length.modulo(4))
+        Base64.decode64(body.tr('-_','+/'))
       end
 
     end
