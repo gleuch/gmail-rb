@@ -9,8 +9,8 @@ module Gmail
       def initialize(opts)
         @id = opts.fetch('id')
         @thread_id = opts.fetch('threadId')
-        @labels = opts.fetch('labelIds')
-        @snippet = opts.fetch('snippet')
+        @labels = opts.try('labelIds')
+        @snippet = opts.try('snippet')
 
         # Process headers
         opts['payload']['headers'].each do |h|
@@ -22,7 +22,7 @@ module Gmail
             when 'Bcc';     @bcc = parse_recipients(h['value'])
             when 'Subject'; @subject= h['value']
             when 'Date';    @date= h['value']
-          end 
+          end
         end
 
         # Get the standard payload body, if exists
